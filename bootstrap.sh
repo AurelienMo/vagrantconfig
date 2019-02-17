@@ -61,6 +61,22 @@ php_go() {
     sudo apt-get -y install php-imagick
     sudo apt-get -y install jpegoptim
     sudo apt-get -y install ruby-sass
+    cat <<EOT > /etc/php/7.2/apache2/conf.d/30-xdebug.ini
+xdebug.remote_enable = 1
+xdebug.remote_connect_back = 1
+xdebug.remote_port = 9001
+xdebug.scream=0
+xdebug.cli_color=1
+xdebug.show_local_vars=1
+EOT
+    cat <<EOT > /etc/php/7.2/cli/conf.d/30-xdebug.ini
+xdebug.remote_enable = 1
+xdebug.remote_connect_back = 1
+xdebug.remote_port = 9001
+xdebug.scream=0
+xdebug.cli_color=1
+xdebug.show_local_vars=1
+EOT
 }
 
 nodenpm_go() {
